@@ -115,3 +115,12 @@ For future entries, record: date; problem/decision; alternatives; action and rat
 - **Outcome/status:** Publication push and remote verification pending at the time of this entry. This does not reverse the earlier historical record that a local MP4 was rendered and reviewed; it records the user's later rejection for publication. Replacement video pending.
 - **Evidence:** User instruction in the project conversation; `.gitignore`, `README.md`, and `deliverables/validation/build_manifest.json`.
 - **Presentation implication:** Do not cite the rejected local demo as an available GitHub deliverable. Describe the replacement as pending and keep the independently validated report, slides, and Mac pilot evidence distinct.
+
+## 2026-11-13 — Non-demo testbed and artifacts published to GitHub
+
+- **Problem/decision:** The user authorized publishing the completed non-demo work to the existing public repository, with the rejected demo excluded.
+- **Alternatives:** Stop at a local branch or publish by normal fast-forward to `main`; force-push was unnecessary because remote `main` remained at the branch base.
+- **Action and rationale:** Committed 295 non-demo files on `experiment-testbed-20261113` as `fef3ad73ca7cdce59f330378f175122f179d26cb`, then pushed `HEAD:main` normally. The commit includes the testbed, configs, scripts, raw Mac evidence, analysis, report, slide deck, speaker notes, and PDF render evidence. No demo source, MP4, or video review files were staged.
+- **Outcome/status:** Verified `origin/main` resolves to `fef3ad73ca7cdce59f330378f175122f179d26cb`. GitHub API returned the README, report PDF, slide PDF, and presentation study record. The demo MP4 path returned 404, confirming it was not published. iCollege submission remains unverified.
+- **Evidence:** Commit `https://github.com/addiee13/project_effAI/commit/fef3ad73ca7cdce59f330378f175122f179d26cb`; `git ls-remote origin refs/heads/main`; GitHub contents API checks; staged-path audit.
+- **Presentation implication:** The GitHub testbed and non-demo deliverables are available at the course repository. The replacement demo remains pending, and repository publication does not establish course submission.

@@ -1,6 +1,6 @@
 # Project journal
 
-This journal records difficulties, decisions, research effort, and lessons for the report, presentation, and Q&A. Entries below were reconstructed from the project conversation and files on November 11, 2026; exact durations were not measured. No device benchmark results have been collected in this conversation.
+This journal preserves the November 11–12 planning history and records later execution as dated follow-ups. Entries reconstructed from earlier project context are marked by their original dates; exact durations were not measured unless stated. Mac presentation-pilot evidence was collected on November 13, 2026; Android results remain pending.
 
 For future entries, record: date; problem/decision; alternatives; action and rationale; outcome/status; evidence; presentation implication. Append follow-ups when evidence or decisions change.
 
@@ -94,3 +94,24 @@ For future entries, record: date; problem/decision; alternatives; action and rat
 - **Outcome/status:** Repository live at `https://github.com/addiee13/project_effAI`. Clean baseline established for version-controlling scripts, prompt datasets, and aggregated metrics.
 - **Evidence:** Git commit `a5be00e` and GitHub remote `https://github.com/addiee13/project_effAI.git`.
 - **Presentation implication:** Satisfies the deliverable requirement for a public GitHub testbed repository to be cited in the report and slides.
+
+
+## 2026-11-13 — User-approved exploratory Mac pilot completed; artifact rendering validated
+
+- **Problem/decision:** The original controlled plan required three measured repetitions/configuration and a strict thermal gate. The user reduced the immediate presentation scope to one measured request/configuration, prioritizing feasible descriptive evidence and a later Android handoff.
+- **Alternatives:** Wait through the strict idle stabilization gate and attempt the original repeated study, or preserve that protocol for future work while running a separately frozen presentation session.
+- **Action and rationale:** Preserved the interrupted strict session and first presentation attempt, then used the separate frozen `mac-20261113-presentation-v2` scope: four model/quantization combinations, three input budgets, two output budgets, one same-process warm-up per loaded model, and one measured request per configuration. Timing was exploratory; no stabilization, standard-deviation, or repeatability claim was made.
+- **Outcome/status:** All 24 unique requests passed the parent agent's independent audit for exact input/output counts, prompt/request token agreement, stop reason, no truncation, cache disabled, stream count, runtime denominators, and unique coverage. The saved run window was 05:45:39–05:54:36 UTC (00:45:39–00:54:36 EST). Temperature varied widely; the strict gate was not satisfied, so these are exploratory Mac CPU observations. A `caffeinate` assertion began at 05:52:10 UTC, partway through the sweep. Android has not been measured. One observation/configuration cannot estimate SD or repeatability.
+- **Energy and sensor limits:** The one-second `macmon` temperature field varied during requests and GPU temperature was unavailable. Timestamped macmon samples supported gross CPU+GPU+ANE request-boundary estimates for 22/24 requests, including 11/12 of the 512-output cases; these are estimated component rails, not whole-device energy or decode J/token. The privileged `powermetrics` file is supplementary, not the headline energy source.
+- **Artifact outcome:** The validated records produced traceable CSV/JSON and plots. The rendered report is 16 PDF pages (12 substantive pages, one references page, and three figure appendix pages), the slide deck is 17 slides planned for 18 minutes, and the silent evidence video is 72 seconds. The video uses a saved validated run, traceable plots, and stated n=1 and power-boundary limits. PDFs were rendered and visually reviewed; the MP4 was fully decoded with ffmpeg and inspected at opening, energy, and closing frames. The final video is H.264 1920x1080 at 30 fps.
+- **Evidence:** `results/mac-20261113-presentation-v2/operations-notes.md`, frozen session plan and run JSON/SSE records; `analysis/mac-20261113-presentation-v2/`; `deliverables/evidence/`; `deliverables/output/`; `deliverables/validation/`. Raw runs and interrupted evidence remain preserved.
+- **Presentation implication:** Present only descriptive findings from the Mac CPU pilot. Show no SD/error bars or two-device comparison. State that Android, the three-repeat strict-thermal study, WikiText-2 perplexity, focused KV-cache comparison, monitoring-overhead controls, and operator profiling remain future work. Distinguish this locally rendered artifact set from publication to GitHub or submission to iCollege.
+
+## 2026-11-13 — Demo video excluded from GitHub publication at user direction
+
+- **Problem/decision:** Before publishing the completed non-demo testbed and artifacts, the user said the demo was bad and explicitly directed that it not be pushed.
+- **Alternatives:** Publish the previously rendered local MP4 and its editable HyperFrames source, or publish the reproducible testbed, evidence, report, and slides while excluding the rejected demo and marking a replacement pending.
+- **Action and rationale:** Excluded `deliverables/demo-video/`, `deliverables/output/effai_mac_evidence_demo.mp4`, `deliverables/validation/video-*`, and `deliverables/validation/video-review/` from publication via targeted ignore rules. Kept report and slide artifacts, shared experimental evidence, and source provenance. Updated README and build manifest so they do not advertise a published or available demo. The local rejected video remains in the isolated worktree and was not deleted.
+- **Outcome/status:** Publication push and remote verification pending at the time of this entry. This does not reverse the earlier historical record that a local MP4 was rendered and reviewed; it records the user's later rejection for publication. Replacement video pending.
+- **Evidence:** User instruction in the project conversation; `.gitignore`, `README.md`, and `deliverables/validation/build_manifest.json`.
+- **Presentation implication:** Do not cite the rejected local demo as an available GitHub deliverable. Describe the replacement as pending and keep the independently validated report, slides, and Mac pilot evidence distinct.

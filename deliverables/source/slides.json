@@ -1,0 +1,206 @@
+{
+  "title": "Efficiency Profiling of Small Language Models",
+  "subtitle": "Qwen2.5 on edge hardware | Mac phase; Android pending",
+  "authors": "Adam Dalwai · Mahean Seam · Vrushti Patel",
+  "slides": [
+    {
+      "title": "How much does local inference cost?",
+      "seconds": 60,
+      "layout": "title",
+      "points": [
+        "Two Qwen2.5 Instruct sizes: 0.5B and 1.5B",
+        "Weight variants: Q4_K_M and Q8_0",
+        "Apple M1 CPU baseline; Android replication later"
+      ],
+      "notes": "Introduce the team and Topic 1. Our study asks how the cost of inference changes under a real edge device's memory, compute, and thermal limits. The selected pair is Qwen2.5 0.5B and 1.5B Instruct. We use two official GGUF weight variants for each checkpoint. The Mac phase uses a CPU baseline to create a clear starting point for the later phone replication. State the evidence cut shown in the results slides: Android has not been measured. A laptop result cannot establish phone feasibility or a cross-device winner. The contribution is a reproducible measurement chain that connects a configuration to raw observations and then to every plotted value."
+    },
+    {
+      "title": "A fast decoder can still feel slow",
+      "seconds": 60,
+      "layout": "phases",
+      "points": [
+        "Load: process start to model ready",
+        "Prefill: evaluate the formatted input",
+        "Decode: generate at the populated context",
+        "Client latency: includes request and stream delivery"
+      ],
+      "notes": "Explain the inference phases using the horizontal diagram. Loading is separate because a warm server has already paid that cost. Prefill processes the user's input, including formatting. Decode generates tokens after that populated context. A user sees request handling and delivery as well as runtime work, so client first-token time differs from the runtime's prefill number. This is why one tokens-per-second ranking cannot describe responsiveness. llama-bench excludes tokenization and sampling, as its official documentation states; our real-prompt stream complements runtime timing. Keep this distinction in mind when we discuss the results. Source: pinned llama-bench documentation, https://github.com/ggml-org/llama.cpp/blob/79967ec596c0dacfd2251b085a57e79df292b1cc/tools/llama-bench/README.md."
+    },
+    {
+      "title": "We narrowed the pair after feasibility research",
+      "seconds": 60,
+      "layout": "comparison",
+      "points": [
+        "Original proposal: TinyLlama 1.1B + Qwen2.5 3B",
+        "Adopted: Qwen2.5 0.5B + 1.5B Instruct",
+        "Same family improves control; architecture still changes",
+        "Phone RAM estimate: 6-8 GB, not yet verified"
+      ],
+      "notes": "The historical proposal is preserved in the repository. Research exposed two planning concerns: TinyLlama's advertised 2048-token context did not fit our longest input plus generation, and the 3B Q8 file left uncertain runtime headroom on a phone estimated at six to eight gigabytes. Neither concern is presented as an observed out-of-memory failure. The user approved the smaller same-family pair. This improves control over family and tuning while retaining a useful size difference, but it does not make parameter count the only architectural change. Official GGUF repositories provide both target weight variants. Sources: Qwen official 0.5B and 1.5B GGUF model cards, linked in references; PROJECT_JOURNAL.md for the decision history."
+    },
+    {
+      "title": "The Mac matrix has 24 configurations",
+      "seconds": 75,
+      "layout": "matrix",
+      "points": [
+        "2 model sizes × 2 weight variants",
+        "3 input lengths: 256 / 1,024 / 2,048 tokens",
+        "2 output budgets: 128 / 512 tokens",
+        "Mac presentation pilot: 1 observation/config (n=1)"
+      ],
+      "notes": "The current main matrix contains 24 configurations per device because we include both output budgets: two model sizes, two weight variants, three input lengths, and two output lengths. The exploratory Mac presentation session has one measured request per configuration. It does not meet the complete repeated protocol. If all configurations were run on both devices, the full matrix would be 48 configurations. The original proposal counted 24 across both devices when it included only the 128-token output condition. A future controlled study uses three measured repetitions per configuration (144 measured requests across both devices), after a warm-up and with the strict thermal gate. Android is pending. The coverage table counts validated requests only."
+    },
+    {
+      "title": "Equal labels need exact token workloads",
+      "seconds": 75,
+      "layout": "context",
+      "points": [
+        "Count tokens after all formatting",
+        "Save exact input arrays and actual output counts",
+        "Capacity: 3,072 positions; largest occupied: 2,560",
+        "No prompt reuse; forced output caps disclosed"
+      ],
+      "notes": "A nominal 2048-token prompt must really contain 2048 tokens after formatting. We save the token array and verify the runtime count. The maximum occupied workload is 2048 input plus 512 output, which fits inside the configured capacity of 3072. Capacity and occupancy are different: an allocated cache can reserve more memory than currently occupied positions. Timed requests disable prompt reuse so the long-context condition does the intended prefill work. Ignore-EOS forces a fixed generation budget for this controlled throughput workload. That is a measurement choice, not ordinary chat behavior or a claim that all generated tokens are useful. Tokens are a workload dimension rather than a measure of semantic work."
+    },
+    {
+      "title": "Pin the experiment, then prove the backend",
+      "seconds": 60,
+      "layout": "pipeline",
+      "points": [
+        "Model revision + file SHA-256",
+        "llama.cpp source commit + build options + binary hash",
+        "CPU, 4 threads, one request; zero GPU layers",
+        "Raw logs → run records → analysis → artifacts"
+      ],
+      "notes": "Show the evidence flow. Model names alone do not identify the actual file, so the manifest saves revisions and SHA-256 checksums. The runtime is pinned to commit 79967ec596c0dacfd2251b085a57e79df292b1cc. The Mac Release build disables Metal, enables Accelerate, and uses zero GPU layers. We retain backend logs, not just configuration intent. An archive build can report an unknown version string because it lacks Git metadata; source and binary checksums provide the provenance. Every run is joined to a configuration and raw stream, memory, thermal, and server evidence. Derived tables and artifacts must come from the same saved snapshot. The public repository link is real, but new local work still needs publication verification."
+    },
+    {
+      "title": "Thermal data are exploratory in this presentation run",
+      "seconds": 75,
+      "layout": "thermal",
+      "points": [
+        "One bounded temperature observation per model block",
+        "Reference window: 40.85–50.25 °C; not stabilized",
+        "Continuously record actual temperature and nominal pressure",
+        "Strict 60 s / ≤1 °C gate stays in the full protocol"
+      ],
+      "notes": "The presentation run used a bounded 30-second CPU-temperature observation window and one measurement per configuration. Its first reference window ranged from 40.85 to 50.25 degrees C, so it is not a stable idle baseline. Do not say the exploratory run passed the full thermal-stability rule. Later raw samples and power-state context are retained, and any timeouts remain visible. The complete controlled protocol remains stricter: a 60-second window with range at most one degree C and a mean no more than two degrees above a stable idle baseline, plus 120 seconds between repeated configurations."
+    },
+    {
+      "title": "Power boundaries decide which claims are valid",
+      "seconds": 60,
+      "layout": "energy",
+      "points": [
+        "{{energy_line}}",
+        "No whole-device or decode J/token estimate",
+        "Android USB boundary remains pending"
+      ],
+      "notes": "This panel integrates timestamped macmon CPU, GPU, and ANE power estimates across the client request interval. Eleven of twelve 512-output observations have sample brackets with no gap above the chosen limit; the plotted points are gross estimated component-rail joules, one per configuration. It excludes some system components and is not a whole-device measurement. It is not decode-phase isolated, so do not call it decode joules per token. The separate powermetrics log is supplementary; its system thermal-pressure samples were nominal while CPU-temperature readings rose substantially. Caffeinate began partway through the sweep, which also limits comparisons. Android USB input may include charging and remains a different boundary."
+    },
+    {
+      "title": "Results begin with coverage",
+      "seconds": 75,
+      "layout": "results_coverage",
+      "points": [
+        "{{coverage_line}}",
+        "Warm-up, pilot, exploratory and failure records stay separate",
+        "Android: pending teammate execution"
+      ],
+      "notes": "Use the current generated coverage line rather than an earlier manually copied number. Explain the definition of included records, whether the required three repetitions are present, and why any attempts are excluded. Coverage tells the audience whether a comparison is a complete repeated result or a pilot. If the snapshot is incomplete, say so explicitly. Do not use a short smoke result as a throughput conclusion. Android has no measured values at this evidence cut. The table should not represent missing phone data as zero. Point the audience to the snapshot manifest and raw run identifiers supporting the numerical slides."
+    },
+    {
+      "title": "Weight quantization: compare within each checkpoint",
+      "seconds": 75,
+      "layout": "results_decode",
+      "points": [
+        "{{decode_line}}",
+        "Q4 and Q8 are compared within each checkpoint",
+        "One observation per point; no SD or error bars"
+      ],
+      "notes": "Describe each point as a single Mac observation for the stated checkpoint, input, output, cache, and backend. There is no SD or error bar because n=1. The measured Q4/Q8 difference is descriptive for this run and exact runtime, not a reliable general ranking. A speed change alone does not prove a bandwidth bottleneck. Android and repeated controlled runs remain pending. The source table and run IDs trace each plotted point."
+    },
+    {
+      "title": "Context changes both work and interpretation",
+      "seconds": 60,
+      "layout": "results_context",
+      "points": [
+        "{{context_line}}",
+        "Prefill and decode remain separate",
+        "Allocated cache capacity stays fixed at 3,072"
+      ],
+      "notes": "Explain how prefill and decode behave as populated context changes in the current data. The context plot must hold checkpoint, weight type, output budget, backend, and cache constant. Configured capacity remains 3072, so allocated cache memory may not rise with input length even though occupied context does. Three input lengths support a trend over the tested range but do not precisely locate a knee or justify extrapolation to maximum advertised context. Compare 128 and 512 outputs separately where evidence exists. Longer outputs increase total work and may expose sustained thermal behavior. Use actual output counts and retained stop reasons to verify the comparison."
+    },
+    {
+      "title": "Focused tests answer different questions",
+      "seconds": 60,
+      "layout": "substudies",
+      "points": [
+        "KV-cache comparison: not run in this presentation sweep",
+        "WikiText-2 perplexity: not run",
+        "Operator profiling: not run",
+        "No sub-study results are implied by the main matrix"
+      ],
+      "notes": "These focused studies are outside the current single-pass presentation matrix. The full protocol retains a long-context F16 versus Q8_0 KV-cache comparison, same-data within-model WikiText-2 perplexity, and a separate operator profile. We do not present results for work that was not executed. Perplexity would measure held-out likelihood, not instruction-following quality. Profiling timings would remain separate from headline timing."
+    },
+    {
+      "title": "What the evidence can support",
+      "seconds": 60,
+      "layout": "limitations",
+      "points": [
+        "Mac main matrix: one observation/configuration",
+        "No SD, significance, or repeatability claim",
+        "Android evidence is still pending",
+        "Conclusions are limited to tested CPU conditions"
+      ],
+      "notes": "The evidence supports descriptive observations for the validated Mac CPU requests only. One run per configuration cannot estimate within-configuration variability or support statistical significance. It does not support a repeatability claim. Android is pending, so there is no device winner or two-device conclusion. The observed values are specific to this pinned model, quantization, runtime, context, and thread setup."
+    },
+    {
+      "title": "Demo: trace one real request to its evidence",
+      "seconds": 90,
+      "layout": "demo",
+      "points": [
+        "Play the verified video (< 120 s)",
+        "Show exact configuration and real saved response",
+        "Open raw timing + token-count record",
+        "Locate the same run in the analysis"
+      ],
+      "notes": "Play the actual generated demo video. This slot is ninety seconds and is included in the eighteen-minute presentation budget. The video uses real saved testbed evidence, not a synthetic interface simulating live inference. If live inference is available and approved under the presentation conditions, show one small case; do not run a new benchmark sweep. The evidence fallback should remain ready if a device or runtime is unavailable. Explain whether the view is replayed evidence or a current request. Show a run identifier, the exact token counts, the runtime timings, and the location of the corresponding analysis record. Do not type passwords or expose unrelated terminal history. After playback, transition directly to the handoff and conclusion."
+    },
+    {
+      "title": "Android handoff preserves the experiment",
+      "seconds": 60,
+      "layout": "handoff",
+      "points": [
+        "Record phone identity, power state, sensors and units",
+        "Same source + model hashes; CPU baseline verified",
+        "Small smoke → largest pilot → cooled randomized matrix",
+        "Return raw evidence, failures and configuration manifest"
+      ],
+      "notes": "The teammate's work begins with device identification and the documented handoff, not with a blind full sweep. Physical RAM, available memory, process limits, thermal units, and supported counters must be checked. Keep model and runtime identities aligned with the Mac baseline and label platform build options. Run a small schema check, then the largest-condition pilot with complete output counts and monitoring. If it fails, save the evidence and revise the plan explicitly rather than dropping Q8 on only one device. Return the raw directory, hardware record, commands, and failures. When those files arrive, validate them before merging aggregates; energy comparisons require compatible boundaries."
+    },
+    {
+      "title": "The contribution is an auditable testbed",
+      "seconds": 45,
+      "layout": "closing",
+      "points": [
+        "Every performance claim points to a measured run",
+        "Phase timing, memory and power keep their boundaries",
+        "Mac evidence now; two-device conclusions after replication",
+        "github.com/addiee13/project_effAI"
+      ],
+      "notes": "Close with the strongest measured conclusion currently present in the generated snapshot. Keep the distinction between implemented, measured, published, and submitted. The repository is the place to inspect configurations and reproduce analysis; verify the new work is published before claiming that every local file is available remotely. Our practical contribution is the chain from pinned workload to retained evidence to figures and conclusions. The Android phase will test whether the local recommendations survive on the actual phone. Thank the audience and move to questions without claiming that pending experiments or iCollege submission are complete."
+    },
+    {
+      "title": "References and questions",
+      "seconds": 30,
+      "layout": "references",
+      "points": [
+        "Qwen2.5 Technical Report · arXiv:2412.15115",
+        "Official Qwen 0.5B / 1.5B GGUF repositories",
+        "Pinned llama.cpp + llama-bench documentation",
+        "WikiText · arXiv:1609.07843"
+      ],
+      "notes": "Sources are provided in full in the report and the deck's editable source. Qwen report: https://arxiv.org/abs/2412.15115v2. Official GGUF sources: https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF and https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF. Runtime: https://github.com/ggml-org/llama.cpp/tree/79967ec596c0dacfd2251b085a57e79df292b1cc. WikiText source: https://arxiv.org/abs/1609.07843. Reserve question time according to the instructor's final timing clarification. Prepare to explain why lower precision does not guarantee speedup, why CPU and energy boundaries matter, how exact token lengths were enforced, and what Android still needs to validate."
+    }
+  ]
+}

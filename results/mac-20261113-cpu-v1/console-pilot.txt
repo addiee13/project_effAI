@@ -1,0 +1,10 @@
+2026-11-13T05:38:27.664984+00:00 Waiting for stable 60-second idle baseline
+Traceback (most recent call last):
+  File "/Users/addie/.treehouse/project_effAI-experiment-20261113/scripts/run_study.py", line 350, in <module>
+    main()
+    ~~~~^^
+  File "/Users/addie/.treehouse/project_effAI-experiment-20261113/scripts/run_study.py", line 327, in main
+    observed=thermal(sensor,None,study,session/'idle-stabilization.json');baseline=observed['mean'];save(baseline_path,observed)
+  File "/Users/addie/.treehouse/project_effAI-experiment-20261113/scripts/run_study.py", line 111, in thermal
+    raise InterruptedError('stop requested during thermal wait')
+InterruptedError: stop requested during thermal wait

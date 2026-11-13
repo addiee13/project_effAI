@@ -1,0 +1,163 @@
+{
+  "report_pages": 16,
+  "substantive_pages": 12,
+  "report_sections": [
+    {
+      "page": 1,
+      "words": 415,
+      "bottom_y": 125.2
+    },
+    {
+      "page": 2,
+      "words": 436,
+      "bottom_y": 177.4
+    },
+    {
+      "page": 3,
+      "words": 481,
+      "bottom_y": 162.6
+    },
+    {
+      "page": 4,
+      "words": 475,
+      "bottom_y": 162.6
+    },
+    {
+      "page": 5,
+      "words": 429,
+      "bottom_y": 192.2
+    },
+    {
+      "page": 6,
+      "words": 460,
+      "bottom_y": 147.8
+    },
+    {
+      "page": 7,
+      "words": 508,
+      "bottom_y": 118.2
+    },
+    {
+      "page": 8,
+      "words": 438,
+      "bottom_y": 192.2
+    },
+    {
+      "page": 9,
+      "words": 417,
+      "bottom_y": 207.0
+    },
+    {
+      "page": 10,
+      "words": 508,
+      "bottom_y": 81.4
+    },
+    {
+      "page": 11,
+      "words": 434,
+      "bottom_y": 177.4
+    },
+    {
+      "page": 12,
+      "words": 494,
+      "bottom_y": 103.4
+    },
+    {
+      "page": 13,
+      "words": 184,
+      "bottom_y": 260.6
+    }
+  ],
+  "slide_pages": 17,
+  "presentation_budget_seconds": 1080,
+  "slides": [
+    {
+      "slide": 1,
+      "seconds": 60,
+      "bottom_y": 198
+    },
+    {
+      "slide": 2,
+      "seconds": 60,
+      "bottom_y": 120
+    },
+    {
+      "slide": 3,
+      "seconds": 60,
+      "bottom_y": 192
+    },
+    {
+      "slide": 4,
+      "seconds": 75,
+      "bottom_y": 192
+    },
+    {
+      "slide": 5,
+      "seconds": 75,
+      "bottom_y": 192
+    },
+    {
+      "slide": 6,
+      "seconds": 60,
+      "bottom_y": 192
+    },
+    {
+      "slide": 7,
+      "seconds": 75,
+      "bottom_y": 192
+    },
+    {
+      "slide": 8,
+      "seconds": 60,
+      "bottom_y": 65
+    },
+    {
+      "slide": 9,
+      "seconds": 75,
+      "bottom_y": 244
+    },
+    {
+      "slide": 10,
+      "seconds": 75,
+      "bottom_y": 84
+    },
+    {
+      "slide": 11,
+      "seconds": 60,
+      "bottom_y": 109
+    },
+    {
+      "slide": 12,
+      "seconds": 60,
+      "bottom_y": 192
+    },
+    {
+      "slide": 13,
+      "seconds": 60,
+      "bottom_y": 192
+    },
+    {
+      "slide": 14,
+      "seconds": 90,
+      "bottom_y": 192
+    },
+    {
+      "slide": 15,
+      "seconds": 60,
+      "bottom_y": 192
+    },
+    {
+      "slide": 16,
+      "seconds": 45,
+      "bottom_y": 192
+    },
+    {
+      "slide": 17,
+      "seconds": 30,
+      "bottom_y": 192
+    }
+  ],
+  "snapshot_status": "mac_presentation_pilot_complete_android_pending",
+  "snapshot_sha256": "9085a72e30e085944f8d4d540e296ae324d1fa0a801d9d6c902da7b04972a376",
+  "visual_review": "report and slide PDF render contact sheets visually reviewed; video was excluded from publication at the user's direction"
+}

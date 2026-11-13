@@ -8,7 +8,7 @@ Use **Qwen2.5-0.5B-Instruct** and **Qwen2.5-1.5B-Instruct** as the recommended m
 
 **Keep Qwen2.5-3B outside the main matrix under this RAM assumption.** Its Q8_0 file is 3.62 GB before KV cache, work buffers, and Android memory use. This is a risk assessment, not proof that it cannot run. A later 3B experiment is an optional extension only after both devices demonstrate stable memory headroom; it should not delay the complete two-model study. The earlier 12 GB upgrade scenario is no longer the working plan.
 
-The two recommended models preserve the proposed **24 configurations and 72 measured runs**, plus warm-ups and focused sub-studies. The original TinyLlama/3B proposal remains unchanged as a record; this file is the current RAM-based recommendation, pending pilot validation.
+The user adopted the Qwen2.5-0.5B/1.5B pair on **2026-11-13**. This supersedes the earlier status below that the proposal had not adopted the research recommendation. The pair preserves 24 configurations when the 512-output condition is included. The presentation pilot is limited to one Mac observation per configuration; this is not 72 repeated runs. The original TinyLlama/3B proposal remains historical context. Mac runtime validation is underway; Android hardware fit remains unverified until the teammate records phone specifications and completes the largest-condition pilot.
 
 ### Ranked candidates
 

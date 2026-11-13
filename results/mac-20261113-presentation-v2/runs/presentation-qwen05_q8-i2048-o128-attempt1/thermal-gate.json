@@ -1,0 +1,17 @@
+[
+  {
+    "at": "2026-11-13T05:53:40.574904+00:00",
+    "wait_seconds": 0.0002471250008966308,
+    "sample_count": 30,
+    "coverage_seconds": 29.2239582910006,
+    "minimum": 91.36328125,
+    "maximum": 92.7353286743164,
+    "mean": 91.92680206298829,
+    "idle_baseline_celsius": 43.45885099213699,
+    "repeat_gap_satisfied": true,
+    "cpu_active_ratio_mean": 0.5496805479129155,
+    "cpu_power_w_mean": 7.389525445302327,
+    "idle_activity_rule_satisfied": true,
+    "accepted": true
+  }
+]

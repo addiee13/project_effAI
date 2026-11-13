@@ -1,0 +1,47 @@
+2026-11-13T05:47:48.144714+00:00 idle baseline: 43.459 C
+2026-11-13T05:47:48.146486+00:00 Starting presentation-qwen15_q8-i2048-o512
+2026-11-13T05:49:25.884996+00:00 OK presentation-qwen15_q8-i2048-o512: 33.31s, 27.26decode tok/s
+2026-11-13T05:49:25.886147+00:00 Starting presentation-qwen15_q8-i2048-o128
+2026-11-13T05:49:46.238530+00:00 OK presentation-qwen15_q8-i2048-o128: 20.28s, 26.34decode tok/s
+2026-11-13T05:49:46.239915+00:00 Starting presentation-qwen15_q8-i1024-o512
+2026-11-13T05:50:11.614651+00:00 OK presentation-qwen15_q8-i1024-o512: 25.30s, 27.37decode tok/s
+2026-11-13T05:50:11.616454+00:00 Starting presentation-qwen15_q8-i256-o128
+2026-11-13T05:50:17.474246+00:00 OK presentation-qwen15_q8-i256-o128: 5.78s, 29.71decode tok/s
+2026-11-13T05:50:17.476303+00:00 Starting presentation-qwen15_q8-i1024-o128
+2026-11-13T05:50:28.986140+00:00 OK presentation-qwen15_q8-i1024-o128: 11.43s, 27.51decode tok/s
+2026-11-13T05:50:28.988472+00:00 Starting presentation-qwen15_q4-i256-o512
+2026-11-13T05:51:04.216045+00:00 OK presentation-qwen15_q4-i256-o512: 18.39s, 30.60decode tok/s
+2026-11-13T05:51:04.219641+00:00 Starting presentation-qwen15_q4-i1024-o128
+2026-11-13T05:51:16.080085+00:00 OK presentation-qwen15_q4-i1024-o128: 11.77s, 32.94decode tok/s
+2026-11-13T05:51:16.083327+00:00 Starting presentation-qwen15_q4-i2048-o128
+2026-11-13T05:51:38.897286+00:00 OK presentation-qwen15_q4-i2048-o128: 22.73s, 30.56decode tok/s
+2026-11-13T05:51:38.902657+00:00 Starting presentation-qwen15_q4-i1024-o512
+2026-11-13T05:52:03.150870+00:00 OK presentation-qwen15_q4-i1024-o512: 24.16s, 32.83decode tok/s
+2026-11-13T05:52:03.154608+00:00 Starting presentation-qwen15_q4-i2048-o512
+2026-11-13T05:52:37.784454+00:00 OK presentation-qwen15_q4-i2048-o512: 34.55s, 30.40decode tok/s
+2026-11-13T05:52:37.788525+00:00 Starting presentation-qwen15_q4-i256-o128
+2026-11-13T05:52:42.852520+00:00 OK presentation-qwen15_q4-i256-o128: 4.99s, 38.45decode tok/s
+2026-11-13T05:52:42.857140+00:00 Starting presentation-qwen05_q4-i1024-o512
+2026-11-13T05:53:03.062466+00:00 OK presentation-qwen05_q4-i1024-o512: 9.75s, 69.83decode tok/s
+2026-11-13T05:53:03.067038+00:00 Starting presentation-qwen05_q4-i2048-o512
+2026-11-13T05:53:18.359926+00:00 OK presentation-qwen05_q4-i2048-o512: 15.21s, 60.15decode tok/s
+2026-11-13T05:53:18.364892+00:00 Starting presentation-qwen05_q4-i256-o512
+2026-11-13T05:53:25.368663+00:00 OK presentation-qwen05_q4-i256-o512: 6.93s, 79.09decode tok/s
+2026-11-13T05:53:25.374533+00:00 Starting presentation-qwen05_q4-i256-o128
+2026-11-13T05:53:27.463431+00:00 OK presentation-qwen05_q4-i256-o128: 2.01s, 81.77decode tok/s
+2026-11-13T05:53:27.468963+00:00 Starting presentation-qwen05_q4-i1024-o128
+2026-11-13T05:53:31.716106+00:00 OK presentation-qwen05_q4-i1024-o128: 4.17s, 72.41decode tok/s
+2026-11-13T05:53:31.722078+00:00 Starting presentation-qwen05_q4-i2048-o128
+2026-11-13T05:53:40.567745+00:00 OK presentation-qwen05_q4-i2048-o128: 8.76s, 61.79decode tok/s
+2026-11-13T05:53:40.573873+00:00 Starting presentation-qwen05_q8-i2048-o128
+2026-11-13T05:53:58.303931+00:00 OK presentation-qwen05_q8-i2048-o128: 8.51s, 63.37decode tok/s
+2026-11-13T05:53:58.310111+00:00 Starting presentation-qwen05_q8-i2048-o512
+2026-11-13T05:54:13.265704+00:00 OK presentation-qwen05_q8-i2048-o512: 14.87s, 61.42decode tok/s
+2026-11-13T05:54:13.272266+00:00 Starting presentation-qwen05_q8-i256-o512
+2026-11-13T05:54:20.207532+00:00 OK presentation-qwen05_q8-i256-o512: 6.86s, 79.70decode tok/s
+2026-11-13T05:54:20.214445+00:00 Starting presentation-qwen05_q8-i1024-o512
+2026-11-13T05:54:30.044774+00:00 OK presentation-qwen05_q8-i1024-o512: 9.75s, 69.57decode tok/s
+2026-11-13T05:54:30.052169+00:00 Starting presentation-qwen05_q8-i1024-o128
+2026-11-13T05:54:34.291079+00:00 OK presentation-qwen05_q8-i1024-o128: 4.16s, 71.79decode tok/s
+2026-11-13T05:54:34.298852+00:00 Starting presentation-qwen05_q8-i256-o128
+2026-11-13T05:54:36.341401+00:00 OK presentation-qwen05_q8-i256-o128: 1.97s, 83.66decode tok/s

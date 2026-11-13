@@ -1,0 +1,1004 @@
+[
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "pilot-largest-0",
+    "phase": "pilot",
+    "repetition": 0
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "pilot-largest-1",
+    "phase": "pilot",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "overhead-pair0-rss0",
+    "phase": "overhead",
+    "repetition": 0,
+    "instrumentation": false
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "overhead-pair0-rss1",
+    "phase": "overhead",
+    "repetition": 0,
+    "instrumentation": true
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "overhead-pair1-rss1",
+    "phase": "overhead",
+    "repetition": 1,
+    "instrumentation": true
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "overhead-pair1-rss0",
+    "phase": "overhead",
+    "repetition": 1,
+    "instrumentation": false
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "overhead-pair2-rss0",
+    "phase": "overhead",
+    "repetition": 2,
+    "instrumentation": false
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "overhead-pair2-rss1",
+    "phase": "overhead",
+    "repetition": 2,
+    "instrumentation": true
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i2048-o128-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 0
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i2048-o128-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i2048-o128-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i2048-o128-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 1024,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i1024-o512-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 1
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 1024,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i1024-o512-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 1024,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i1024-o512-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 1024,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i1024-o512-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i2048-o512-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 2
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i2048-o512-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i2048-o512-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i2048-o512-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i256-o128-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 3
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i256-o128-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i256-o128-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i256-o128-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 256,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i256-o512-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 4
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 256,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i256-o512-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 256,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i256-o512-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 256,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i256-o512-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 1024,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i1024-o512-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 5
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 1024,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i1024-o512-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 1024,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i1024-o512-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 1024,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i1024-o512-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i2048-o512-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 6
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i2048-o512-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i2048-o512-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i2048-o512-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i1024-o128-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 7
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i1024-o128-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i1024-o128-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i1024-o128-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 1024,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i1024-o512-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 8
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 1024,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i1024-o512-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 1024,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i1024-o512-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 1024,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i1024-o512-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i256-o128-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 9
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i256-o128-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i256-o128-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i256-o128-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i1024-o128-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 10
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i1024-o128-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i1024-o128-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i1024-o128-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 256,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i256-o512-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 11
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 256,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i256-o512-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 256,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i256-o512-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 256,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i256-o512-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i256-o128-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 12
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i256-o128-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i256-o128-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i256-o128-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 256,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i256-o512-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 13
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 256,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i256-o512-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 256,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i256-o512-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 256,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i256-o512-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 256,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i256-o512-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 14
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 256,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i256-o512-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 256,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i256-o512-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 256,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i256-o512-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 1024,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i1024-o512-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 15
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 1024,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i1024-o512-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 1024,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i1024-o512-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 1024,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i1024-o512-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i2048-o128-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 16
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i2048-o128-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i2048-o128-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i2048-o128-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i1024-o128-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 17
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i1024-o128-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i1024-o128-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i1024-o128-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i1024-o128-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 18
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i1024-o128-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i1024-o128-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 1024,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q4-i1024-o128-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i2048-o128-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 19
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i2048-o128-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i2048-o128-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen15_q8",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen15_q8-i2048-o128-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i2048-o512-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 20
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i2048-o512-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i2048-o512-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen05_q8",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q8-i2048-o512-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i2048-o128-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 21
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i2048-o128-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i2048-o128-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i2048-o128-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i256-o128-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 22
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i256-o128-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i256-o128-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 256,
+    "output_tokens": 128,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i256-o128-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i2048-o512-f16-warmup",
+    "phase": "warmup",
+    "repetition": 0,
+    "randomized_block": 23
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i2048-o512-f16-r1",
+    "phase": "main",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i2048-o512-f16-r2",
+    "phase": "main",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen05_q4",
+    "input_tokens": 2048,
+    "output_tokens": 512,
+    "cache_type": "f16",
+    "id": "qwen05_q4-i2048-o512-f16-r3",
+    "phase": "main",
+    "repetition": 3
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "q8_0",
+    "id": "kv-q8-r0",
+    "phase": "kv_warmup",
+    "repetition": 0
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "q8_0",
+    "id": "kv-q8-r1",
+    "phase": "kv",
+    "repetition": 1
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "q8_0",
+    "id": "kv-q8-r2",
+    "phase": "kv",
+    "repetition": 2
+  },
+  {
+    "model_id": "qwen15_q4",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_type": "q8_0",
+    "id": "kv-q8-r3",
+    "phase": "kv",
+    "repetition": 3
+  }
+]

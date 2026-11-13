@@ -72,3 +72,14 @@ tmp/
 *.swp
 *.swo
 *~
+
+# Rejected local demo video and its build/review assets (do not publish).
+deliverables/demo-video/
+deliverables/output/effai_mac_evidence_demo.mp4
+deliverables/validation/video-*
+deliverables/validation/video-review/
+
+# Transient study and local analysis caches.
+results/study.lock
+**/__pycache__/
+**/.systemcache/

@@ -1,0 +1,63 @@
+CMAKE_BUILD_TYPE=Release
+fatal: not a git repository (or any of the parent directories): .git
+fatal: not a git repository (or any of the parent directories): .git
+-- Warning: ccache not found - consider installing it for faster compilation or disable this warning with GGML_CCACHE=OFF
+-- CMAKE_SYSTEM_PROCESSOR: arm64
+-- GGML_SYSTEM_ARCH: ARM
+-- Including CPU backend
+-- Accelerate framework found
+-- Could NOT find OpenMP_C (missing: OpenMP_C_FLAGS OpenMP_C_LIB_NAMES) 
+-- Could NOT find OpenMP_CXX (missing: OpenMP_CXX_FLAGS OpenMP_CXX_LIB_NAMES) 
+-- Could NOT find OpenMP (missing: OpenMP_C_FOUND OpenMP_CXX_FOUND) 
+CMake Warning at ggml/src/ggml-cpu/CMakeLists.txt:79 (message):
+  OpenMP not found
+Call Stack (most recent call first):
+  ggml/src/CMakeLists.txt:378 (ggml_add_cpu_backend_variant_impl)
+
+
+-- ARM detected
+-- ARM -mcpu not found, -mcpu=native will be used
+-- ARM feature DOTPROD enabled
+-- ARM feature FMA enabled
+-- ARM feature FP16_VECTOR_ARITHMETIC enabled
+-- Adding CPU backend variant ggml-cpu: -mcpu=native+dotprod+noi8mm+nosve+nosme 
+-- BLAS found, Libraries: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Accelerate.framework
+-- BLAS found, Includes: 
+-- Including BLAS backend
+-- ggml version: 0.9.4-dirty
+-- ggml commit:  unknown
+CMake Warning at common/CMakeLists.txt:32 (message):
+  Git repository not found; to enable automatic generation of build info,
+  make sure Git is installed and the project is a Git repository.
+
+
+-- Configuring done (0.5s)
+-- Generating done (0.2s)
+-- Build files have been written to: /Users/addie/.cache/effai/runtime/llama.cpp-79967ec596c0dacfd2251b085a57e79df292b1cc/build-cpu
+[  0%] Built target build_info
+[ 10%] Built target ggml-base
+[ 12%] Built target ggml-blas
+[ 34%] Built target ggml-cpu
+[ 38%] Built target ggml
+[ 72%] Built target llama
+[ 78%] Built target mtmd
+[ 95%] Built target common
+[100%] Built target llama-server
+[  0%] Built target build_info
+[ 11%] Built target ggml-base
+[ 13%] Built target ggml-blas
+[ 37%] Built target ggml-cpu
+[ 41%] Built target ggml
+[ 79%] Built target llama
+[ 97%] Built target common
+[100%] Built target llama-bench
+[  0%] Built target build_info
+[ 11%] Built target ggml-base
+[ 13%] Built target ggml-blas
+[ 37%] Built target ggml-cpu
+[ 41%] Built target ggml
+[ 79%] Built target llama
+[ 97%] Built target common
+[100%] Built target llama-perplexity
+version: 0 (unknown)
+built with Apple clang version 17.0.0 (clang-1700.4.4.1) for arm64-apple-darwin25.0.0

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "study_id": "effai-qwen25-cpu-v1",
+  "runtime": {
+    "tag": "b6784",
+    "commit": "79967ec596c0dacfd2251b085a57e79df292b1cc",
+    "mac_build": {
+      "CMAKE_BUILD_TYPE": "Release",
+      "GGML_METAL": "OFF",
+      "GGML_ACCELERATE": "ON",
+      "LLAMA_CURL": "OFF",
+      "LLAMA_BUILD_TESTS": "OFF"
+    }
+  },
+  "model_selection": "user-adopted Qwen2.5 0.5B/1.5B; Android feasibility pending",
+  "input_tokens": [
+    256,
+    1024,
+    2048
+  ],
+  "output_tokens": [
+    128,
+    512
+  ],
+  "threads": 4,
+  "batch": 512,
+  "ubatch": 128,
+  "context_capacity": 3072,
+  "backend": "CPU",
+  "gpu_layers": 0,
+  "parallel": 1,
+  "flash_attention": true,
+  "main_cache_type": "f16",
+  "kv_substudy": {
+    "model_id": "qwen15_q4",
+    "input_tokens": 2048,
+    "output_tokens": 128,
+    "cache_types": [
+      "f16",
+      "q8_0"
+    ]
+  },
+  "warmups": 1,
+  "repetitions": 3,
+  "random_seed": 20261113,
+  "minimum_repeat_gap_seconds": 120,
+  "generation": {
+    "temperature": 0,
+    "seed": 113,
+    "ignore_eos": true,
+    "cache_prompt": false
+  },
+  "thermal_rule": {
+    "sample_interval_seconds": 10,
+    "window_seconds": 60,
+    "maximum_range_celsius": 1.0,
+    "maximum_above_idle_celsius": 2.0,
+    "timeout_seconds": 1800,
+    "without_temperature": "exploratory_only"
+  },
+  "model_manifest": "configs/models.json",
+  "prompt_corpus": "prompts/corpus-v1.txt",
+  "thread_environment": {
+    "VECLIB_MAXIMUM_THREADS": "4",
+    "OMP_NUM_THREADS": "4"
+  },
+  "randomization": "24 configuration blocks randomized with Python random.Random(20261113); each block same server warm-up then three measured replicates",
+  "power_policy": "AC power, charging state recorded; component-energy estimates do not include battery charging",
+  "idle_rule": {
+    "maximum_mean_cpu_active_ratio": 0.35,
+    "maximum_mean_cpu_power_w": 1.5,
+    "operator_condition": "no inference, build, artifact render, or intentional foreground workload; normal desktop services recorded"
+  }
+}

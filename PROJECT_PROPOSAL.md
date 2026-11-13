@@ -10,14 +10,14 @@ We chose Topic 1 because it lets us study how small language models behave under
 
 ## Scope and Experimental Matrix
 
-We will compare an Apple M1 MacBook Air and an Android phone using llama.cpp with GGUF models. The main study has **2 devices × 2 models × 2 quantization levels × 3 context lengths**, for **24 configurations**. We will record the Android phone's model, chipset, RAM, and operating system version before benchmarking.
+We will compare an Apple M1 MacBook Air and an Android phone using llama.cpp with GGUF models. The current adopted matrix has **2 devices × 2 models × 2 quantization levels × 3 input lengths × 2 output budgets**, for **48 configurations total (24 per device)**. The original proposal counted 24 across both devices because it included only a 128-token output condition; adding the assignment brief's 512-token output condition doubles that count. At three measured repetitions, the complete two-device matrix would contain 144 measured requests, plus warm-ups and focused studies. We will record the Android phone's model, chipset, RAM, and operating system version before benchmarking.
 
 | Factor | Settings |
 | --- | --- |
-| Models | TinyLlama 1.1B and Qwen2.5 3B Instruct |
+| Models | Qwen2.5-0.5B-Instruct and Qwen2.5-1.5B-Instruct (user-approved 2026-11-13; original choices retained below as proposal history) |
 | Quantization | Q4_K_M and Q8_0 GGUF files |
-| Context lengths | 256, 1,024, and 2,048 input tokens |
-| Generation settings | One request at a time, 128 output tokens, temperature = 0 |
+| Input lengths | 256, 1,024, and 2,048 actual formatted tokens |
+| Generation settings | One request at a time, 128 and 512 output tokens, temperature = 0 |
 | Runtime settings | Same llama.cpp source revision, prompt set, and fixed thread setting per device; platform-specific builds |
 
 ## Method
@@ -51,3 +51,9 @@ We will calculate mean and standard deviation across the three measured runs and
 | 3–4 | Run the full benchmark on both devices. |
 | 5–6 | Complete KV-cache tests, quality tests, and analysis. |
 | 7–8 | Create figures, finish the report, and prepare the presentation. |
+
+## Adopted update — 2026-11-13
+
+The user approved Qwen2.5-0.5B-Instruct and Qwen2.5-1.5B-Instruct in place of the originally proposed TinyLlama/Qwen2.5-3B pair. The selected models yield 24 configurations per device (48 total) at two quantizations, three input lengths, and two output budgets. The 512-token output condition was added to cover the assignment brief. Exact GGUF revisions and checksums are frozen in `configs/models.json`.
+
+For the presentation, the user authorized one measured Mac request per configuration instead of the complete three-repetition experiment. This exploratory Mac sample has 24 planned configurations, one observation each; it supports descriptive points only, not a sample SD or repeatability claim. The full controlled study across both devices would have 144 measured requests. Its protocol remains documented in `configs/study.json` and `docs/protocol.md` for later completion. Android execution is pending and is not implied by this Mac plan.

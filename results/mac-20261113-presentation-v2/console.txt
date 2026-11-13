@@ -1,0 +1,4 @@
+2026-11-13T05:45:39.393598+00:00 Waiting for stable 60-second idle baseline
+2026-11-13T05:46:09.412586+00:00 idle baseline: 43.459 C
+2026-11-13T05:46:09.413390+00:00 Starting presentation-qwen15_q8-i256-o512
+2026-11-13T05:46:48.417632+00:00 OK presentation-qwen15_q8-i256-o512: 19.43s, 28.40decode tok/s

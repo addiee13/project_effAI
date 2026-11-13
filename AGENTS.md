@@ -9,24 +9,24 @@ Use standard shell commands and native agent tools directly, without command-rew
 ## Read the relevant source
 
 - **Scope or research questions:** read `PROJECT_OBJECTIVES.md` for the assignment brief and `PROJECT_PROPOSAL.md` for the team's proposed experiment. They describe one project, not separate projects.
-- **Model selection or downloads:** read `MODEL_RECOMMENDATIONS.md`, including sources, RAM estimates, context limits, and license differences. Research recommendations are not adopted changes to the proposal.
+- **Model selection or downloads:** read `MODEL_RECOMMENDATIONS.md`, including sources, RAM estimates, context limits, and license differences. Check `PROJECT_PROPOSAL.md` for the user's adopted model decision; keep research recommendations, approved choices, and measured results distinct.
 - **Reports, slides, demos, scheduling, or completion checks:** read `PRESENTATION_AND_SUBMISSION_REQUIREMENTS.md`, transcribed from the instructor's screenshots. It records explicit requirements and unresolved differences between the slides.
 
 Follow the user's latest decisions. Preserve the distinction between the assignment brief, current proposal, research recommendations, and measured results. When a plan differs from an explicit instructor requirement, document the difference rather than silently dropping the requirement.
 
 ## Current experimental plan
 
-The proposal specifies llama.cpp/GGUF, TinyLlama 1.1B and Qwen2.5 3B Instruct, Q4_K_M and Q8_0 weights, 256/1,024/2,048 input tokens, 128 output tokens, temperature 0, and one request at a time. The main matrix has 24 configurations, with one warm-up and three measured runs per configuration in randomized order. Keep at least two minutes between repeated runs and require temperature stabilization; define a measurable stabilization rule in the protocol.
+The historical proposal selected TinyLlama 1.1B and Qwen2.5 3B with a 128-token output. The user later adopted Qwen2.5-0.5B/1.5B Instruct, both Q4_K_M/Q8_0 variants, input lengths 256/1,024/2,048, and output budgets 128/512. The full controlled matrix has 24 configurations per device (48 total), with one warm-up and three measured runs/configuration in randomized order; keep at least two minutes between repeats and require the strict thermal stabilization rule below. For the presentation, the user authorized one exploratory Mac observation/configuration (n=1), with a bounded temperature observation window and no SD or repeatability claim. Keep that session distinct from the full controlled protocol; Android results remain pending.
 
-Use F16 KV cache for the main matrix and a focused long-context F16 versus Q8_0 cache comparison. Treat the objectives' additional 512-output-token condition as a scope difference to resolve before claiming full assignment coverage.
+Use F16 KV cache for the main matrix. A focused long-context F16 versus Q8_0 cache comparison remains planned follow-up work. The adopted 512-output-token condition covers the objectives' additional output length; do not claim that the current single-pass Mac presentation pilot completes the full repeated or two-device study.
 
-Model research recommends Qwen2.5 0.5B/1.5B Instruct as the main recommendation for the estimated 6–8 GB phone; defer 3B models from the main matrix and validate the smaller pair on both devices. The proposal has not been revised to adopt this pair. Resolve the selected pair before freezing the experiment matrix. TinyLlama's advertised 2,048-token context does not accommodate a 2,048-token input plus 128 output tokens; document a valid model/context choice before that run.
+The user adopted Qwen2.5 0.5B/1.5B Instruct for the main pair based on the estimated 6–8 GB phone constraint. The Mac presentation pilot completed the 24 configurations once; Android runtime fit remains unverified. TinyLlama's advertised 2,048-token context did not accommodate a 2,048-token input plus 128 output tokens; this was one reason for replacing the historical proposal pair.
 
 The user has explicitly asked to ignore disk-space limits for model selection. Continue to assess runtime RAM, context feasibility, and process limits. Reuse available tools after checking that they work; installation alone is not validation.
 
 ## Implementation and measurement
 
-- Start with a successful, repeatable pilot on both devices, including the largest planned model/quant/context condition, before the full sweep.
+- Before the full controlled sweep, run a successful, repeatable largest-condition pilot on both devices. The user's current presentation scope overrides this gate for the exploratory Mac-only n=1 session; it does not waive Android feasibility or the repeatability gates for later full claims.
 - Pin the llama.cpp commit, platform build options, model checkpoint and file checksum, prompt/corpus version, thread count, backend, batch settings, sampling settings, and cache types.
 - Record Android hardware/software details before making device-specific feasibility claims. Use a documented CPU baseline; label Metal, Android GPU, or other accelerator experiments separately and verify the actual backend in runtime logs.
 - Count actual input tokens after formatting and reserve context for generated tokens. Distinguish configured capacity from occupied context. Save actual output counts and stop reasons.

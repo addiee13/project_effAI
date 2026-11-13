@@ -1,0 +1,4 @@
+2026-11-13T05:44:20.874176+00:00 Waiting for stable 60-second idle baseline
+2026-11-13T05:44:50.886206+00:00 idle baseline: 39.424 C
+2026-11-13T05:44:50.887302+00:00 Starting presentation-qwen15_q8-i256-o512
+2026-11-13T05:44:54.095926+00:00 presentation-qwen15_q8-i256-o512: interrupted: stop during inference

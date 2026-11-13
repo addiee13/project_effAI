@@ -1,0 +1,74 @@
+# Model recommendations for the edge-efficiency study
+
+**Research pass and constraint update:** 2026-11-11. The user estimates that the Android phone has **6–8 GB RAM**. Treat this as the working hardware constraint, not a verified specification; exact RAM, chipset, and available memory still need checking. No model was downloaded or run for this review. Disk space is excluded from model selection at the user's request.
+
+## Recommendation
+
+Use **Qwen2.5-0.5B-Instruct** and **Qwen2.5-1.5B-Instruct** as the recommended main pair for the **6–8 GB Android phone and 8 GB M1 MacBook Air**, using Q4_K_M and Q8_0 for each model. They keep the comparison within one model family and instruction-tuning regime, have the same Qwen2 architecture type and 151,936-token vocabulary size, and have official Qwen GGUF repositories with both requested quantizations. The original HF checkpoint cards list both as Apache-2.0. Their official GGUF file sizes are small enough to make a 4-bit/8-bit Android pilot realistic, though file size alone does not prove runtime fit.
+
+**Keep Qwen2.5-3B outside the main matrix under this RAM assumption.** Its Q8_0 file is 3.62 GB before KV cache, work buffers, and Android memory use. This is a risk assessment, not proof that it cannot run. A later 3B experiment is an optional extension only after both devices demonstrate stable memory headroom; it should not delay the complete two-model study. The earlier 12 GB upgrade scenario is no longer the working plan.
+
+The two recommended models preserve the proposed **24 configurations and 72 measured runs**, plus warm-ups and focused sub-studies. The original TinyLlama/3B proposal remains unchanged as a record; this file is the current RAM-based recommendation, pending pilot validation.
+
+### Ranked candidates
+
+| Rank | Exact checkpoint(s) | Quant files and official sources | Why it ranks here / caveats |
+| --- | --- | --- | --- |
+| **1 — main pair for 6–8 GB** | [`Qwen/Qwen2.5-0.5B-Instruct`](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct) + [`Qwen/Qwen2.5-1.5B-Instruct`](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct) | [0.5B official GGUF](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/tree/main): Q4_K_M 491 MB, Q8_0 676 MB. [1.5B official GGUF](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF/tree/main): Q4_K_M 1.12 GB, Q8_0 1.89 GB. | Best fit for the estimated 6–8 GB phone and clean within-family scaling (3× parameters). Both are instruction models and Apache-2.0. The smaller model may have limited task quality; measure rather than infer it from size. |
+| **Deferred — larger pair** | [`Qwen/Qwen2.5-1.5B-Instruct`](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct) + [`Qwen/Qwen2.5-3B-Instruct`](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct) | [1.5B official GGUF](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF/tree/main): Q4_K_M 1.12 GB, Q8_0 1.89 GB. [3B official GGUF](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF/tree/main): Q4_K_M 2.10 GB, Q8_0 3.62 GB. | Stronger quality/scale headroom (2× parameters) and same family, tokenizer lineage, and instruction setting. The official 3B card declares `qwen-research`, not Apache-2.0; review its [license](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct/blob/main/LICENSE). Q8_0 on an 8 GB Android phone is likely memory-tight. |
+| **Deferred — optional third model** | [`Qwen/Qwen2.5-3B-Instruct`](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct), added to the default pair | Same [official 3B GGUF repo](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF/tree/main) and Q4_K_M/Q8_0 sizes above. | Adds a three-level model-size sweep within one family, which is cleaner for parameter-scaling analysis than adding a different family. It expands the primary matrix from 24 to 36 model/device/quant/context configurations (before repetitions) and carries the research-license and RAM caveats. |
+| **Considered, not selected as default** | [`Qwen/Qwen3-0.6B`](https://huggingface.co/Qwen/Qwen3-0.6B) / [`Qwen/Qwen3-1.7B`](https://huggingface.co/Qwen/Qwen3-1.7B) | Official [Qwen3 0.6B GGUF](https://huggingface.co/Qwen/Qwen3-0.6B-GGUF/tree/main) currently lists Q4_0 and Q8_0; official [Qwen3 1.7B GGUF](https://huggingface.co/Qwen/Qwen3-1.7B-GGUF/tree/main) is available. | Newer and Apache-2.0; useful follow-up. The official 0.6B GGUF page does not list the proposal's Q4_K_M, and Qwen3's thinking/non-thinking modes add prompt and output-format choices. Choosing it would change the quantization comparison and research question. |
+| **Keep only as historical/cross-family reference** | [`TinyLlama/TinyLlama-1.1B-Chat-v1.0`](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0) | The proposal's community-converted [GGUF repo](https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/tree/main) contains Q4_K_M and Q8_0; it is not an official TinyLlama GGUF repo. | Apache-2.0 and compact, but it uses a different Llama tokenizer/family and its 2,048-token trained context is too short for a 2,048-token prompt plus 128 generated tokens. That undermines direct tokenizer-normalized work and the longest proposed run unless context/prompt length is changed. |
+
+## Comparison and study implications
+
+| Criterion | Qwen2.5-0.5B / 1.5B | Qwen2.5-1.5B / 3B | Proposal: TinyLlama 1.1B / Qwen2.5 3B |
+| --- | --- | --- | --- |
+| Family / tokenizer control | Strong: both `qwen2`; both config files report vocab size 151,936. | Strong: both `qwen2`; both config files report vocab size 151,936. | Weak: TinyLlama follows Llama 2 tokenizer/architecture; Qwen uses Qwen2.5 tokenizer/architecture. |
+| Checkpoint type | Both Instruct. | Both Instruct. | Chat-tuned TinyLlama vs Instruct Qwen. |
+| Context headroom | Both Qwen2.5 cards document long-context support; official GGUF cards report 32,768 full context. Ample for 2,048 input + 128 output. | Same. | TinyLlama's paper reports a 2,048 context length. The proposal needs at least 2,176 total positions plus any template/system tokens. |
+| Official matching quant files | Yes: Q4_K_M and Q8_0 for both checkpoints. | Yes: Q4_K_M and Q8_0 for both checkpoints. | Qwen has official files; TinyLlama uses a third-party conversion. |
+| License | Apache-2.0 for both official checkpoints. | Qwen Research License for 3B; 1.5B is Apache-2.0. | Apache-2.0 TinyLlama; Qwen 3B research license. |
+| Primary research interpretation | Parameter count and quantization within one family; smaller range means lower memory risk. | Parameter count and quantization within one family; clearer capacity scale, more phone risk. | Cross-family, tokenizer, tuning, size, and license all vary at once, making causal attribution harder. |
+
+The Qwen2.5 config files for 1.5B and 3B both report `Qwen2ForCausalLM`, `model_type: qwen2`, and `vocab_size: 151936`; the 0.5B GGUF card reports the same Qwen2.5 architecture family and lists both target quantizations. Before writing the final token-generation harness, compare the checkpoint `tokenizer.json` hashes and use the identical chat-template behavior; matching vocabulary size alone does not prove byte-identical tokenizer files.
+
+The proposal's TinyLlama/Qwen pair mixes tokenizer, architecture family, tuning, model size, and license. That can be a valid **cross-family deployment comparison**, but it cannot isolate those effects. The recommended same-family pair makes the main question narrower and more interpretable: how do parameter scale and weight quantization change runtime cost and measured quality within Qwen2.5 Instruct models? If the team wants a family comparison, add TinyLlama only as a separately labeled third model and fix the total context length and prompt-generation budget; expect additional matrix work.
+
+## RAM and runtime feasibility
+
+The sizes above are **on-disk GGUF sizes**, not peak resident memory. Peak memory also includes KV cache, activations/work buffers, allocator/runtime overhead, and the operating system; Android may impose per-process limits and reclaim memory under pressure. The official llama.cpp CLI documents F16 as the default KV-cache type and Q8_0 as an available K/V option. The cache sub-study is therefore supported by the runtime, but confirm actual cache type and allocation in logs on both builds.
+
+**Feasibility estimates, not measured device results. Plan for the lower end (6 GB) until the phone is identified:**
+
+- M1 MacBook Air with 8 GB unified memory: 0.5B/1.5B at both quants are the conservative choice. 3B Q4_K_M is plausible for an isolated run; 3B Q8_0 (3.62 GB weights before runtime and macOS use) may create memory pressure. Do not assume the 3B Q8 run is viable until the pilot reports peak memory and swap/compression behavior.
+- Android with 8 GB (upper end of the working range): default to 0.5B/1.5B; the 3B Q4_K_M run may work, while 3B Q8_0 is high risk once Android and work buffers are included.
+- Android with 6 GB (lower end of the working range): pilot 0.5B/1.5B at both quants, especially 1.5B Q8_0 at 2,048 input tokens plus 128 output tokens. The 1.89 GB weight file does not guarantee runtime fit; available process memory and system pressure still matter. If Q8_0 does not fit, do not silently switch to a smaller quant on only one device; either reduce the model/pair, or report a changed matrix explicitly.
+
+For apples-to-apples CPU measurements, force CPU inference on both platforms (for example `-ngl 0`) and record thread count. llama.cpp's official Android build docs describe an `arm64-v8a` build; its official releases also publish Android CPU builds. Do not assume Android NPU acceleration: record the phone chipset, and only make an accelerator run a separately controlled experiment if a backend is deliberately configured and verified. Apple M1 is unified memory; keep the same CPU-only or accelerator policy across device runs, and label any Metal/GPU runs separately.
+
+## Quality and token-count methodology
+
+- Keep the proposed Q4_K_M vs Q8_0 comparison, but treat these as two **weight quantizations of the same checkpoint**, not a universal 4-bit-vs-8-bit statement. Preserve the exact checkpoint and quantizer/source for each file.
+- Run `llama-perplexity` with the same held-out corpus and evaluation setup for each quant. Perplexity is useful for detecting quantization degradation on a given model; it does not by itself measure instruction-following or semantic response quality. Report it separately for each model, and compare quantization deltas within a checkpoint. Use a small fixed instruction/task set with rubric or reference-based scoring as a complementary quality measure.
+- The recommended Qwen pair shares family and vocabulary size, which improves token-count comparability, but tokens are still not equal units of semantic work. Do not interpret tokens/s across different tokenizers as equal useful-language throughput. If TinyLlama is retained, report raw tokenizer tokens/s separately and add a common fixed-text workload plus output quality/length measures.
+- A 128-token generation cap gives the same token budget, not the same answer length or useful work. Report answer quality, generated token count, and completion/stop behavior beside throughput. Count the full formatted prompt—including system and chat-template tokens—against context. For each context condition, require enough context for input tokens **plus 128 generated tokens**; the largest run therefore needs at least 2,176 positions before template overhead.
+
+## Pilot validation checklist
+
+1. Record Android model, chipset/SoC, physical RAM, Android version, free/available memory, and whether a high-performance CPU/GPU/NPU backend is active. Record Mac model, RAM, OS, and backend too.
+2. On both devices, load each proposed file with the exact pinned llama.cpp revision, then run one prompt at each context length and generate 128 tokens. Confirm chat template, prompt token count, successful completion, no process kill, and no context overflow.
+3. Capture process peak RSS/available system memory and device thermals during each pilot. For Android, verify the app/process memory limit; for macOS, observe memory pressure and swap. Select the largest pair/quant combination that completes with stable headroom.
+4. If 1.5B Q8_0 fails, first verify configuration and memory conditions and retry with documented, consistent settings. If it still cannot complete reliably, stop and explicitly revise the model pair or matrix before the main sweep. No smaller two-model fallback has been validated; do not silently drop Q8_0, substitute a different checkpoint on one device, or count a failed run as a completed measurement.
+5. Verify `llama-perplexity` accepts both models and the chosen WikiText-2 split; retain corpus version, tokenization, command, llama.cpp commit, and raw logs. Check tokenizer hashes and built-in chat templates before finalizing prompts.
+6. Confirm the CPU-only comparison setting is actually in effect on both devices. Randomize the same run order, warm up, repeat, and report prefill and decode separately as the proposal specifies.
+
+## Sources
+
+- Qwen official checkpoint cards: [0.5B Instruct](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct), [1.5B Instruct](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct), [3B Instruct](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct).
+- Official model configs for architecture/vocabulary evidence: [1.5B config.json](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct/raw/main/config.json), [3B config.json](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct/raw/main/config.json).
+- Official Qwen GGUF repositories and file sizes: [0.5B GGUF](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/tree/main), [1.5B GGUF](https://huggingface.co/Qwen/Qwen2.5-1.5B-Instruct-GGUF/tree/main), [3B GGUF](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF/tree/main).
+- TinyLlama primary evidence: [TinyLlama model card](https://huggingface.co/TinyLlama/TinyLlama-1.1B-Chat-v1.0) and [TinyLlama technical report](https://arxiv.org/abs/2401.02385); the report explains the Llama 2 architecture/tokenizer lineage. The model's 2,048 context is also stated in its [ICLR paper PDF](https://openreview.net/pdf?id=f4gF6AIHRy).
+- Qwen3 considered alternative: [Qwen3-0.6B official GGUF file list](https://huggingface.co/Qwen/Qwen3-0.6B-GGUF/tree/main), [Qwen3-1.7B official GGUF repo](https://huggingface.co/Qwen/Qwen3-1.7B-GGUF/tree/main).
+- Runtime evidence: [llama.cpp CLI options](https://github.com/ggml-org/llama.cpp/blob/master/tools/cli/README.md) for cache types, [Android build guide](https://github.com/ggml-org/llama.cpp/blob/master/docs/android.md), and [official releases](https://github.com/ggml-org/llama.cpp/releases/) showing Android CPU builds.
+- Qwen2.5 primary technical report: [Qwen2.5 technical report](https://arxiv.org/abs/2412.15115).

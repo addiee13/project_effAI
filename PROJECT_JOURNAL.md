@@ -85,3 +85,12 @@ For future entries, record: date; problem/decision; alternatives; action and rat
 - **Outcome/status:** Ongoing instruction established. Entries will explain actual research, decisions, validation, setbacks, and limitations with supporting evidence; presentation value does not justify inventing effort or results.
 - **Evidence:** User's standing instruction and `AGENTS.md`, section "Ongoing project journal".
 - **Presentation implication:** Maintain a reliable source for the methodology narrative, engineering lessons, and Q&A preparation throughout the project.
+
+## 2026-11-12 — Repository initialization and remote setup on GitHub
+
+- **Problem/decision:** The project deliverables require a documented GitHub repository link in the final report and version-controlled experimental configurations. The local workspace had not yet been turned into a Git repository.
+- **Alternatives:** Manual git setup or delegated automation via a GitHub CLI subagent.
+- **Action and rationale:** Initialized a Git repository on branch `main`, drafted a comprehensive `.gitignore` excluding large `.gguf` weights, system caches, and traces to keep the repository lightweight and compliant, committed existing project documentation, and created a public repository `addiee13/project_effAI` via `gh repo create`.
+- **Outcome/status:** Repository live at `https://github.com/addiee13/project_effAI`. Clean baseline established for version-controlling scripts, prompt datasets, and aggregated metrics.
+- **Evidence:** Git commit `a5be00e` and GitHub remote `https://github.com/addiee13/project_effAI.git`.
+- **Presentation implication:** Satisfies the deliverable requirement for a public GitHub testbed repository to be cited in the report and slides.
